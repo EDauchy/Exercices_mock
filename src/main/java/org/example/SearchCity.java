@@ -1,5 +1,7 @@
 package org.example;
 
+import jdk.jshell.spi.ExecutionControl;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class SearchCity {
         );
     }
 
-    public List<String> search(String word) throws NotImplementedException {
-        throw new NotImplementedException();
+    public List<String> search(String word) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Not implemented yet");
     }
 }
