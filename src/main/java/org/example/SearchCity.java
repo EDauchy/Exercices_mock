@@ -1,7 +1,5 @@
 package org.example;
 
-import jdk.jshell.spi.ExecutionControl;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +15,16 @@ public class SearchCity {
         );
     }
 
-    public List<String> search(String word) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Not implemented yet");
+    public List<String> search(String word) throws NotFoundException {
+        if ("*".equals(word)) {
+            return cities;
+        }
+        if (word == null || word.length() < 2) {
+            throw new NotFoundException();
+        }
+        String lowerWord = word.toLowerCase();
+        return cities.stream()
+                .filter(city -> city.toLowerCase().contains(lowerWord))
+                .toList();
     }
 }
